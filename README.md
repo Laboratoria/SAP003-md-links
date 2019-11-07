@@ -18,8 +18,8 @@
 ## 1. Prefácio
 
 [Markdown](https://pt.wikipedia.org/wiki/Markdown) é uma linguagem de marcação
-muito popular entre os programadores. É usado em muitas plataformas que
-manipulam texto (GitHub, fórum, blogs, ...), e é muito comum encontrar arquivos
+muito popular entre os programadores. É usada em muitas plataformas que
+manipulam texto (GitHub, fórum, blogs e etc), e é muito comum encontrar arquivos
 com este formato em qualquer repositório (começando pelo tradicional
 `README.md`).
 
@@ -27,7 +27,7 @@ Os arquivos `Markdown` normalmente contém _links_ que muitas vezes estão
 quebrados, ou que já não são válidos e isso prejudica muito o valor da
 informação que está ali.
 
-Uma comunidade open source nós propôs criar uma ferramenta, usando
+Uma comunidade open source nos propôs criar uma ferramenta, usando
 [Node.js](https://nodejs.org/), que leia e analise arquivos no formato
 `Markdown`, para verificar os arquivos que contenham links e mostrar algumas
 estatísticas.
@@ -38,14 +38,14 @@ estatísticas.
 
 [Node.js](https://nodejs.org/pt-br/) é um ambiente de execução para JavaScript
 construído com o [motor de JavaScript V8 do
-[Chrome](https://developers.google.com/v8/). Isso vai nos permitir executar o
+[Chrome](https://developers.google.com/v8/). Ele vai nos permitir executar o
 JavaScript no nosso sistema operacional, seja no seu computador ou em um
 servidor, o que nos abre portas para poder interagir com sistemas, arquivos,
-redes, ...
+redes e etc.
 
 Neste projeto vamos ficar um pouco longe do navegador para construir um programa
 que seja executado com Node.js, onde iremos aprender sobre como interagir com
-sistemas de arquivo, com o ambiente que é executado o node (_proceso_, _env_,
+sistemas de arquivos e com o ambiente onde é executado o node (_process_, _env_,
 _stdin/stdout/stderr_), ...
 
 Este projeto você criará uma ferramenta de linha de comando (CLI) assim como a
@@ -53,18 +53,18 @@ sua própria biblioteca (library) em JavaScript.
 
 ## 3. Objetivos de aprendizagem
 
-Desenhar sua própria biblioteca é uma experiência fundamental para qualquer
-desenvolvedor porque te obriga a pensar na interface (API) dos seus _módulos_ e
-como será usado por outro desenvolvedores. Você deve levar em conta as
+Desenvolver sua própria biblioteca é uma experiência fundamental para qualquer
+desenvolvedora, pois te obriga a pensar na interface (API) dos seus _módulos_ e
+como ela será usada por outras desenvolvedoras. Você deve levar em conta as
 peculiaridades da linguagem, convenções e boas práticas.
 
-A seguir você pode ver os objetivos de aprendizagem deste projeto:
+A seguir você pode conferir os objetivos de aprendizagem deste projeto:
 
 ### Javascript
 
 * [ ] Uso de callbacks
 * [ ] Consumo de Promises
-* [ ] Criação de uma Promises
+* [ ] Criação de uma Promise
 * [ ] Módulos de JS (CommonJS vs ES Modules)
 
 ### Node
@@ -102,15 +102,15 @@ A seguir você pode ver os objetivos de aprendizagem deste projeto:
 * Este projeto deve ser feito individualmente.
 
 * A biblioteca e script executável (ferramenta de linha de comando - CLI) devem
-  ser implementados em JavaScript para ser executada com Node.JS. **É permitido
+  ser implementados em JavaScript para serem executadas com Node.JS. **É permitido
   usar bibliotecas externas**.
 
 * O seu módulo deve ser instalável via `npm install <github-user>/md-links`. O
   módulo deve incluir um _executável_ que pode ser chamado tanto por linha de
-  comando, quanto importado com `require` para usá-lo no seu código.
+  comando, quanto importado com `require` para ser usado em seu código.
 
 * Os testes unitários devem cobrir no mínimo 95% dos _statements_, _functions_,
-  _lines_ e _branches_. Te recomendamos explorar o [Jest](https://jestjs.io/)
+  _lines_ e _branches_. Recomendamos que explore o [Jest](https://jestjs.io/)
   para as suas provas unitárias.
 
 * Neste projeto não é permitido utilizar `async/await`.
@@ -125,16 +125,16 @@ repositório.
 
 * `README.md` com descrição do módulo, instruções de instalação e uso,
   documentação da API e exemplos. Tudo que for relevante para qualquer
-  desenvolvedor saber como utilizar a sua biblioteca sem inconvenientes.
+  desenvolvedora saber como utilizar a sua biblioteca sem inconvenientes.
 * `index.js` este arquivo deve exportar a função `mdLinks`.
 * `package.json` deve possuir o nome, versão, descrição, autor, licença,
-  dependências e scripts (pretest, test, ...).
+  dependências e scripts (pretest, test e etc).
 * `.eslintrc` com a configuração para o linter. Este arquivo não deve ser
-  alterado
+  alterado.
 * `.gitignore` para ignorar o `node_modules` e outras pastas que não deve ser
-  includas no controle de versão (`git`).
+  incluídas no controle de versão (`git`).
 * `test/md-links.spec.js` deve conter os testes unitários para a função
-  `mdLinks()`. A sua implementação deve rodar estes tests.
+  `mdLinks()`. A sua implementação deve rodar estes testes.
 
 ### JavaScript API
 
@@ -155,12 +155,12 @@ seguinte interface:
 ##### Valor de retorno
 
 A função deve retornar uma promessa (`Promise`) que resolve um array (`Array`) e
-objetos(`Object`), onde cada objeto representa um link, que contém as seguintes
+objetos(`Object`), onde cada objeto representa um link, contendo as seguintes
 propriedades:
 
 * `href`: URL encontrada.
 * `text`: Texto que irá aparecer dentro de um link (`<a>`).
-* `file`: Rota do arquivo onde foi encontrada o link.
+* `file`: Rota do arquivo onde foi encontrado o link.
 
 #### Exemplo
 
