@@ -318,7 +318,6 @@ Para esse projeto recomendamos o uso de [expressões regulares
 * [ ] Possuir o executável `md-links` no path (configurado no `package.json`)
 * [ ] Executar sem erros e ter o resultado esperado
 * [ ] Implementar `--validate`
-* [ ] Implementar `--stats`
 
 ### Testes
 
