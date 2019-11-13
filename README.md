@@ -109,7 +109,7 @@ A seguir você pode conferir os objetivos de aprendizagem deste projeto:
   módulo deve incluir um _executável_ que pode ser chamado tanto por linha de
   comando, quanto importado com `require` para ser usado em seu código.
 
-* Os testes unitários devem cobrir no mínimo 95% dos _statements_, _functions_,
+* Os testes unitários devem cobrir no mínimo 99,9% dos _statements_, _functions_,
   _lines_ e _branches_. Recomendamos que explore o [Jest](https://jestjs.io/)
   para as suas provas unitárias.
 
@@ -126,15 +126,19 @@ repositório.
 * `README.md` com descrição do módulo, instruções de instalação e uso,
   documentação da API e exemplos. Tudo que for relevante para qualquer
   desenvolvedora saber como utilizar a sua biblioteca sem inconvenientes.
-* `index.js` este arquivo deve exportar a função `mdLinks`.
 * `package.json` deve possuir o nome, versão, descrição, autor, licença,
-  dependências e scripts (pretest, test e etc).
+  dependências e scripts (eslint e test).
+* `package-lock.json` arquivo gerado pelo npm, para controle dos pacotes
+  instalados
 * `.eslintrc` com a configuração para o linter. Este arquivo não deve ser
   alterado.
 * `.gitignore` para ignorar o `node_modules` e outras pastas que não deve ser
   incluídas no controle de versão (`git`).
-* `test/md-links.spec.js` deve conter os testes unitários para a função
-  `mdLinks()`. A sua implementação deve rodar estes testes.
+* `cli.js` este arquivo deve chamar a função `mdLinks` que será executada pela
+  linha de comando.
+* `lib/index.js` criação e exportação da função `mdLinks`.
+* `lib/__test__/index.spec.js` deve conter os testes unitários para a função
+  `mdLinks`.
 
 ### JavaScript API
 
@@ -159,23 +163,22 @@ objetos(`Object`), onde cada objeto representa um link, contendo as seguintes
 propriedades:
 
 * `href`: URL encontrada.
-* `text`: Texto que irá aparecer dentro de um link (`<a>`).
-* `file`: Rota do arquivo onde foi encontrado o link.
+* `text`: Texto dentro do markdown.
 
 #### Exemplo
 
 ```js
 const mdLinks = require("md-links");
 
-mdLinks("./some/example.md")
+mdLinks("./example.md")
   .then(links => {
-    // => [{ href, text, file }]
+    // => [{ href, text }]
   })
   .catch(console.error);
 
 mdLinks("/some/example.md", { validate: true })
   .then(links => {
-    // => [{ href, text, file, status, ok }]
+    // => [{ href, text, status }]
   })
   .catch(console.error);
 ```
@@ -191,9 +194,9 @@ Por exemplo:
 
 ```sh
 $ md-links ./some/example.md
-./some/example.md http://algo.com/2/3/ Link de algo
-./some/example.md https://outra-coisa-.net/algum-doc.html algum doc
-./some/example.md http://google.com/ Google
+http://algo.com/2/3/ Link de algo
+https://outra-coisa-.net/algum-doc.html algum doc
+http://google.com/ Google
 ```
 
 O comportamento padrão não deve validar se as URLs responde ok ou não, somente
@@ -214,13 +217,10 @@ Por exemplo:
 
 ```sh
 $ md-links ./some/example.md --validate
-./some/example.md http://algo.com/2/3/ ok 200 Link de algo
-./some/example.md https://outra-coisa-.net/algum-doc.html fail 404 algum doc
-./some/example.md http://google.com/ ok 301 Google
+http://algo.com/2/3/ 200 Link de algo
+https://outra-coisa-.net/algum-doc.html 404 algum doc
+http://google.com/ 301 Google
 ```
-
-Vemos que o _output_ neste caso inclui a palavra `ok` e `fail` depois da URL,
-assim como o status da resposta recebida a requisição HTTP feita pela URL.
 
 ## 6. Entregáveis
 
@@ -298,7 +298,7 @@ Para esse projeto recomendamos o uso de [expressões regulares
 
 ### General
 
-* [ ] Poder instalar via `npm install --global <github-user>/md-links`
+* [ ] Poder instalar via `npm install -g <github-user>/md-links`
 
 ### `README.md`
 
@@ -306,7 +306,7 @@ Para esse projeto recomendamos o uso de [expressões regulares
 * [ ] Documentação técnica da sua biblioteca
 * [ ] Guia de uso e instalação da biblioteca
 
-### API `mdLinks(path, opts)`
+### API `mdLinks(path, option)`
 
 * [ ] O módulo exporta uma função com a interface (API) esperada
 * [ ] Implementa suporte para arquivo individual
@@ -321,6 +321,6 @@ Para esse projeto recomendamos o uso de [expressões regulares
 
 ### Testes
 
-* [ ] Os testes unitários devem cobrir no mínimo 70% dos statements, functions,
+* [ ] Os testes unitários devem cobrir no mínimo 99,9% dos statements, functions,
   lines e branches.
 * [ ] Rodar os tests e linter (`npm test`).
