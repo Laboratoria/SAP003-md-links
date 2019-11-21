@@ -7,11 +7,11 @@
 * [3. Objetivos de aprendizagem](#3-objetivos-de-aprendizagem)
 * [4. Considerações gerais](#4-considerações-gerais)
 * [5. Critérios de aceitação mínimos do
-  projeto](#5-criterios-de-aceitação-mínimos-do-projeto)
+  projeto](#5-critérios-de-aceitação-mínimos-do-projeto)
 * [6. Entregáveis](#6-entregáveis)
 * [7. Guias, dicas e leituras
-  complementares](#9-guias-dicas-e-leituras-complementares)
-* [8. Checklist](#10-checklist)
+  complementares](#7-guias-dicas-e-leituras-complementares)
+* [8. Checklist](#8-checklist)
 
 ***
 
@@ -145,16 +145,13 @@ repositório.
 O módulo deve poder ser importado em outros scripts Node.js e deve oferecer a
 seguinte interface:
 
-#### `mdLinks(path, options)`
+#### `mdLinks(path)`
 
-##### Argumentos
+##### Argumento
 
 * `path`: Rota absoluta ou relativa ao arquivo. Se a rota passada é
   relativa, deve resolver como sendo relativa ao diretório onde foi chamada -
   _current working directory_
-* `options`: Um objeto com a seguinte propriedade:
-  - `validate`: Um booleano que determina se deseja validar os links
-    encontrados.
 
 ##### Valor de retorno
 
@@ -173,12 +170,6 @@ const mdLinks = require("md-links");
 mdLinks("./example.md")
   .then(links => {
     // => [{ href, text }]
-  })
-  .catch(console.error);
-
-mdLinks("/some/example.md", { validate: true })
-  .then(links => {
-    // => [{ href, text, status }]
   })
   .catch(console.error);
 ```
@@ -205,9 +196,42 @@ argumento), analisar o arquivo Markdown e imprimir os links que vão sendo
 encontrados, junto com a rota do arquivo onde aparece e o texto que tem dentro
 do link (truncado 50 caracteres).
 
-#### Options
 
-##### `--validate`
+#### Hacker Edition
+
+##### Argumentos
+
+Adicionar o argumento `option`, dentro da função `mdLinks(path, option)`
+
+* `path`: Rota absoluta ou relativa ao arquivo. Se a rota passada é
+  relativa, deve resolver como sendo relativa ao diretório onde foi chamada -
+  _current working directory_
+* `option`: Um objeto com a seguinte propriedade:
+  - `validate`: Um booleano que determina se deseja validar os links
+    encontrados.
+
+##### Valor de retorno
+
+Você deve adicionar o _status_ da requisição dentro do objeto da resposta de
+cada url encontrada.
+
+* `href`: URL encontrada.
+* `text`: Texto dentro do markdown.
+* `status`: Status da requisição.
+
+##### Exemplo
+
+```js
+const mdLinks = require("md-links");
+
+mdLinks("/some/example.md", { validate: true })
+  .then(links => {
+    // => [{ href, text, status }]
+  })
+  .catch(console.error);
+```
+
+##### CLI `--validate`
 
 Se passamos a opção `--validate`, o módulo deve fazer uma requisição HTTP para
 verificar se o link funciona ou não. Se o link resultar em um redirecionamento a
@@ -306,18 +330,15 @@ Para esse projeto recomendamos o uso de [expressões regulares
 * [ ] Documentação técnica da sua biblioteca
 * [ ] Guia de uso e instalação da biblioteca
 
-### API `mdLinks(path, option)`
+### API `mdLinks(path)`
 
 * [ ] O módulo exporta uma função com a interface (API) esperada
 * [ ] Implementa suporte para arquivo individual
-* [ ] Implementa suporte para diretórios
-* [ ] Implementa `options.validate`
 
 ### CLI
 
 * [ ] Possuir o executável `md-links` no path (configurado no `package.json`)
 * [ ] Executar sem erros e ter o resultado esperado
-* [ ] Implementar `--validate`
 
 ### Testes
 
