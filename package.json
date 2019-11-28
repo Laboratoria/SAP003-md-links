@@ -10,10 +10,13 @@
     "type": "git",
     "url": "git+https://github.com/elaineshimabukuro/SAP003-md-links.git"
   },
-  "author": "",
+  "author": "Elaine",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/elaineshimabukuro/SAP003-md-links/issues"
   },
+  "bin": {
+    "md-link": "cli.js"
+  }
   "homepage": "https://github.com/elaineshimabukuro/SAP003-md-links#readme"
 }
