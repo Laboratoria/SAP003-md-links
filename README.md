@@ -137,7 +137,7 @@ repositório.
 * `cli.js` este arquivo deve chamar a função `mdLinks` que será executada pela
   linha de comando.
 * `lib/index.js` criação e exportação da função `mdLinks`.
-* `lib/__test__/index.spec.js` deve conter os testes unitários para a função
+* `lib/__tests__/index.spec.js` deve conter os testes unitários para a função
   `mdLinks`.
 
 ### JavaScript API
