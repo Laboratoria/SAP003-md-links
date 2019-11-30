@@ -1,19 +1,30 @@
 {
   "name": "mdlinks",
   "version": "1.0.0",
-  "description": "markdown library",
-  "main": "lib/index.js",
+  "description": "## Índice",
+  "main": "cli.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pretest": "npm run eslint",
+    "test": "jest --coverage ",
+    "eslint": "eslint --ext .js libs/ --fix"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jackmattar/SAP003-md-links.git"
   },
-  "author": "",
+  "author": "Jackeline Mattar",
   "license": "ISC",
+  "bin": {
+    "md-links": "cli.js"
+  },
   "bugs": {
     "url": "https://github.com/jackmattar/SAP003-md-links/issues"
   },
-  "homepage": "https://github.com/jackmattar/SAP003-md-links#readme"
+  "homepage": "https://github.com/jackmattar/SAP003-md-links#readme",
+  "devDependencies": {
+    "eslint": "^6.7.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^23.0.5",
+    "jest": "^24.9.0"
+  }
 }
