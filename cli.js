@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 
 const mdLinks = require("./libs/index.js");
+const path = process.argv[2]
+let option = process.argv[3]
 
-mdLinks(process.argv[2])
+option ===  '--validate'? option = true : option = false
+
+mdLinks(path, option)
   .then(links => {
-   links.map(element => {
-        console.log({href: element.href, text: element.text})        
-    })
+    console.log(links)
   })
   .catch(console.error);

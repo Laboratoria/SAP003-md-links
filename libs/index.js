@@ -1,10 +1,10 @@
 const fs = require('fs');
-const newArray =[];
+const fetch = require("node-fetch");
 
-const mdLinks = (fileUrl) => {
+const mdLinks = (path, option) => {
 
     return new Promise ( (resolve, reject) => {
-        fs.readFile(fileUrl, 'utf8', (err, logData)=>{
+        fs.readFile(path, 'utf8', (err, logData)=>{
             if(err){
                 reject('Erro: arquivo não encontrado')
             } else {
@@ -12,12 +12,30 @@ const mdLinks = (fileUrl) => {
                 if(matchResult === null){
                     reject('Erro: nenhum link encontrado')
                 } else {
-                    matchResult.forEach(data => {
-                    const regexResult = data.match(/(\[(.*\n.*|.*)\])\((.*)\)/)
-                    newArray.push({text: regexResult[2], href: regexResult[3]})
+                    const newArray = matchResult.map(data => {
+                        const regexResult = data.match(/(\[(.*\n.*|.*)\])\((.*)\)/)
+                        return ({href: regexResult[3], text: regexResult[2]})
                     })
+
+                    if(option === true){
+                       const promeses = newArray.map(element => {
+                          return  fetch(element.href)
+                            .then(response => {
+                                element.status = response.status
+                            })
+                            .catch(error => {
+                                element.status = 'Page not found'
+                            })
+                        })
+
+                        Promise.all(promeses)
+                        .then(res => resolve(newArray))
+
+                    } else {
+                        resolve(newArray)
+                    }
                 }
-                resolve(newArray)
+                
             }
         })
     }) 

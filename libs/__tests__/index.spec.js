@@ -32,5 +32,23 @@ test('Retorna erro de um arquivo .md válido porém sem links ', (done) => {
     });
 });
 
+test('Faz a validação de links caso options seja true', (done) => {
+    mdLinks('libs/__tests__/test.md', true)
+    .then((response) => {
+        expect(response).toEqual([{ href: "https://google.com", text: "Texto 1", status: 200 },
+        { href: "http://developer.mozilla.org/pt-BR", text: "Texto 2", status: 200 }]);
+        done();
+    })
+})
 
+test('Retorna page not found para links quebrados', (done) => {
+    mdLinks('libs/__tests__/testPageNotFound.md', true)
+    .then((response) => {
+        expect(response).toEqual([
+            {href: 'https://ggle.com', text: 'Texto 1', status: 'Page not found'},
+            {href: 'http://developer.mozilla.org/pt-BR', text: 'Texto 2', status: 200}
+        ]);
+        done();
+    })
+})
 
