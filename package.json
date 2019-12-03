@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "jest --coverage",
-    "eslint": "eslint --ext .js"
+    "eslint": "eslint --fix --ext .js lib/",
+    "pretest": "npm run eslint"
   },
   "bin": {
     "md-links": "lib/cli.js"
