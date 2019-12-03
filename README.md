@@ -90,7 +90,18 @@ https://outra-coisa-.net/algum-doc.html 404 algum doc
 https://site-inexistente.com ENOTFOUND Nome do site
 http://google.com/ 301 Google`
 
-## 4. Considerações Gerais
+## 4. Considerações Finais
 
-Essa biblioteca foi desenvolvida usando:
+Esse projeto foi desenvolvido como parte do currículo do Bootcamp Laboratória Brasil, e as tecnologias 
+usadas foram:
+
+* JavaScript
+* Node.js
+* Eslint
+* Jest
+* node-fetch
+* fs
+
+Projeto desenvolvido por Jackeline Mattar.
+
 
