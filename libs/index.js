@@ -8,7 +8,7 @@ const mdLinks = (path, option) => {
             if(err){
                 reject('Erro: arquivo não encontrado')
             } else {
-                const matchResult = logData.match(/(\[[^\[\]]+\])\(ht*[^\(\)]+\)/g)
+                const matchResult = logData.match(/(\[[^\[\]]+\])\((ht*|ww*)[^\(\)]+\)/g)
                 if(matchResult === null){
                     reject('Erro: nenhum link encontrado')
                 } else {

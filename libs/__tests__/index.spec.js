@@ -8,6 +8,8 @@ const brokenLinks = [
     {href: 'http://developer.mozilla.org/pt-BR', text: 'Texto 2', status: 200}
 ]
 
+jest.setTimeout(70000)
+
 describe("mdLinks",() => {  
     it("É uma função", () => {
         expect(typeof mdLinks).toEqual("function");
