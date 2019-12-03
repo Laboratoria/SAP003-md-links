@@ -44,60 +44,53 @@ Caso ocorra um erro de permissão na instalação tente:
 
 ### Como usar
 
+#### Usando em um arquivo .js
+
 Para usar a biblioteca em seus projetos JavaScript, faça um `require` no seu arquivo da seguinte forma:
 
+```js
+const mdLinks = require(".caminho-da-pasta-de-instalação/libs/index.js");
 
-### Javascript
+mdLinks(path, option)
+  .then(links => {
+    console.log(links)
+  })
+  .catch(console.error);
+```
+`path`: Rota absoluta ou relativa ao arquivo.
+`option`: Um objeto com a propriedade validate, que é um booleano, caso queira validar os links ou não.
 
-* [ ] Uso de callbacks
-* [ ] Consumo de Promises
-* [ ] Criação de uma Promise
-* [ ] Módulos de JS (CommonJS vs ES Modules)
+#### CLI (Command Line Interface - Interface de Linha de Comando)
 
-### Node
+Você também pode usar com uma CLI direto no seu terminal, da seguinte maneira:
 
-* [ ] Sistema de arquivos ([fs](https://nodejs.org/api/fs.html), [path](https://nodejs.org/api/path.html))
-* [ ] [package.json](https://docs.npmjs.com/files/package.json)
-* [ ] criação de módulos [(CommonJS)](https://nodejs.org/docs/latest-v0.10.x/api/modules.html)
-* [ ] Instalar e usar módulos ([npm](https://www.npmjs.com/))
-* [ ] [npm-scripts](https://docs.npmjs.com/misc/scripts)
-* [ ] CLI (Command Line Interface - Interface de Linha de Comando)
-* [ ] [http.get](https://nodejs.org/api/http.html#http_http_get_options_callback)
+`$ md-links caminho/do/arquivo.md`
 
-### Testing
+#### Validando os links
 
-* [ ] Testar suas funções
-* [ ] Teste assíncrono
-* [ ] Usar biblioteca de mock
-* [ ] Mock manual
-* [ ] Teste para múltiplos sistemas operacionais
+Você pode validar os links pela CLI usando:
+`$ md-links caminho/do/arquivo.md  --validate`
 
-### Git e Github
+ou passando o objeto no lugar de option
 
-* [ ] Organização no Github
+```js
+//option = {validate: true} ou {validate: false}
+mdLinks('./exemplo.md', {validate: true})
+  .then(links => {
+    console.log(links)
+  })
+  .catch(console.error);
+```
 
-### Boas práticas de desenvolvimento
+#### Retorno esperado
 
-* [ ] Modularização
-* [ ] Nomenclatura / Semântica
-* [ ] Linting
+`$ md-links ./algum/exemplo.md --validate
+http://algo.com/2/3/ 200 Link de algo
+https://outra-coisa-.net/algum-doc.html 404 algum doc
+https://site-inexistente.com ENOTFOUND Nome do site
+http://google.com/ 301 Google`
 
-***
+## 4. Considerações Gerais
 
-## 4. Considerações gerais
+Essa biblioteca foi desenvolvida usando:
 
-* Este projeto deve ser feito individualmente.
-
-* A biblioteca e script executável (ferramenta de linha de comando - CLI) devem
-  ser implementados em JavaScript para serem executadas com Node.JS. **É permitido
-  usar bibliotecas externas**.
-
-* O seu módulo deve ser instalável via `npm install <github-user>/md-links`. O
-  módulo deve incluir um _executável_ que pode ser chamado tanto por linha de
-  comando, quanto importado com `require` para ser usado em seu código.
-
-* Os testes unitários devem cobrir no mínimo 99,9% dos _statements_, _functions_,
-  _lines_ e _branches_. Recomendamos que explore o [Jest](https://jestjs.io/)
-  para as suas provas unitárias.
-
-* Neste projeto não é permitido utilizar `async/await`.
