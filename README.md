@@ -58,6 +58,7 @@ mdLinks(path, option)
   .catch(console.error);
 ```
 `path`: Rota absoluta ou relativa ao arquivo.
+
 `option`: Um objeto com a propriedade validate, que é um booleano, caso queira validar os links ou não.
 
 #### CLI (Command Line Interface - Interface de Linha de Comando)
