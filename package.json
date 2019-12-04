@@ -1,0 +1,30 @@
+{
+  "name": "md-links",
+  "version": "1.0.0",
+  "description": "## Índice",
+  "main": "index.js",
+  "dependencies": {
+    "jest": "^24.9.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.7.1",
+    "eslint-plugin-react": "^7.16.0",
+    "jest": "^24.9.0"
+  },
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fabiana-Soares/SAP003-md-links.git"
+  },
+  "bin": {
+    "md-links": "lib/cli.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fabiana-Soares/SAP003-md-links/issues"
+  },
+  "homepage": "https://github.com/Fabiana-Soares/SAP003-md-links#readme"
+}
