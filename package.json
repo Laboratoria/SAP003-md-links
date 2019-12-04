@@ -26,5 +26,8 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^23.0.5",
     "jest": "^24.9.0"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.0"
   }
 }
